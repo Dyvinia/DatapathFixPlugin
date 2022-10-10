@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "DatapathFixPlugin": {
+      "commandName": "Executable",
+      "executablePath": "D:\\Development\\repos\\Dyvinia\\FrostyToolsuite\\FrostyModManager\\bin\\Release\\Final\\FrostyModManager.exe",
+      "workingDirectory": "D:\\Development\\repos\\Dyvinia\\FrostyToolsuite\\FrostyModManager\\bin\\Release\\Final"
+    }
+  }
+}

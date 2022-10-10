@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>x64</Platforms>
+    <TargetFrameworks>net48</TargetFrameworks>
+    <AssemblyTitle>DatapathFixPlugin</AssemblyTitle>
+    <Product>DatapathFixPlugin</Product>
+    <Copyright>Copyright ©  2020</Copyright>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <UseWPF>true</UseWPF>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="FrostyControls">
+      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyControls.dll</HintPath>
+    </Reference>
+    <Reference Include="FrostyCore">
+      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FrostyHash">
+      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyHash.dll</HintPath>
+    </Reference>
+    <Reference Include="FrostyModSupport">
+      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyModSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="FrostySdk">
+      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostySdk.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+	
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\&#xD;&#xA;xcopy /Y $(TargetDir)$(TargetName).pdb D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\"/>
+  </Target>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Development\repos\Dyvinia\FrostyToolsuite\Plugins\DatapathFixPlugin\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\Development\repos\Dyvinia\FrostyToolsuite\Plugins\DatapathFixPlugin\.editorconfig" />
+  </ItemGroup>
+
+</Project>

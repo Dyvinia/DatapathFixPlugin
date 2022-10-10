@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32916.344
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatapathFix", "DatapathFix\DatapathFix.csproj", "{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatapathFixPlugin", "DatapathFixPlugin\DatapathFixPlugin.csproj", "{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC} = {E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Debug|x64.Build.0 = Debug|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Release|x64.ActiveCfg = Release|Any CPU
+		{E20FEA8D-7006-4C13-B453-5BA2BAC60CBC}.Release|x64.Build.0 = Release|Any CPU
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Debug|Any CPU.ActiveCfg = Developer - Debug|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Debug|Any CPU.Build.0 = Developer - Debug|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Debug|x64.ActiveCfg = Debug|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Debug|x64.Build.0 = Debug|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Release|Any CPU.ActiveCfg = Release - Alpha|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Release|Any CPU.Build.0 = Release - Alpha|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Release|x64.ActiveCfg = Release|x64
+		{000B2288-20C5-4CE0-A58F-1CCF3DBC6A33}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A20C13F6-15DC-4472-93C3-4F1AD4A4B49C}
+	EndGlobalSection
+EndGlobal
