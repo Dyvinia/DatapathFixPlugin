@@ -25,17 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="FrostyControls">
-      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyControls.dll</HintPath>
-    </Reference>
     <Reference Include="FrostyCore">
       <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyCore.dll</HintPath>
-    </Reference>
-    <Reference Include="FrostyHash">
-      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyHash.dll</HintPath>
-    </Reference>
-    <Reference Include="FrostyModSupport">
-      <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostyModSupport.dll</HintPath>
     </Reference>
     <Reference Include="FrostySdk">
       <HintPath>D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\FrostySdk.dll</HintPath>
@@ -48,8 +39,8 @@
 	
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\&#xD;&#xA;xcopy /Y $(TargetDir)$(TargetName).pdb D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\"/>
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe $(TargetDir)"/>
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe $(TargetDir)" />
   </Target>
 
   <ItemGroup>
