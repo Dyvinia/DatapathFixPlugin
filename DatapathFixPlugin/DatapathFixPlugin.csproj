@@ -49,6 +49,7 @@
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\&#xD;&#xA;xcopy /Y $(TargetDir)$(TargetName).pdb D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
     <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\"/>
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\$(OutDir)DatapathFix.exe $(TargetDir)"/>
   </Target>
 
   <ItemGroup>
