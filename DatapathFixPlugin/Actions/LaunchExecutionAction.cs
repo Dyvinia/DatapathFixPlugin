@@ -22,7 +22,8 @@ namespace DatapathFixPlugin.Actions
 
             if (Config.Get("DatapathFixEnabled", true) && File.Exists(DatapathFix))
             {
-                string cmdArgs = $"-dataPath \"{Path.Combine(App.FileSystem.BasePath, $"ModData\\{App.SelectedPack}")}\"";
+                string cmdArgs = $"-dataPath \"{Path.Combine(App.FileSystem.BasePath, $"ModData\\{App.SelectedPack}")}\" ";
+                cmdArgs += Config.Get("CommandLineArgs", "", ConfigScope.Game);
 
                 try
                 {
