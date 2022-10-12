@@ -64,6 +64,12 @@ namespace DatapathFixPlugin.Actions
             {
                 File.Delete(game.Replace(".exe", ".old"));
                 File.Delete(Path.Combine(App.FileSystem.BasePath, "tmp"));
+
+                if (File.Exists(game.Replace(".exe", ".orig.exe")))
+                {
+                    File.Delete(game);
+                    File.Move(game.Replace(".exe", ".orig.exe"), game);
+                }
             }
             catch (Exception ex)
             {
