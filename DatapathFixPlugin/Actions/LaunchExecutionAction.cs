@@ -129,12 +129,8 @@ namespace DatapathFixPlugin.Actions
                 {
                     client.DefaultRequestHeaders.Add("User-Agent", "request");
 
-                    Release releases = JsonConvert.DeserializeObject<Release>(await client.GetStringAsync($"https://api.github.com/repos/Dyvinia/DatapathFixPlugin/releases/latest"));
-
-                    Version latest = new Version(releases.Tag.Substring(1));
-                    Version local = CurrentVersion;
-
-                    if (local.CompareTo(latest) < 0)
+                    Version latestVersion = new Version(JsonConvert.DeserializeObject<Release>(await client.GetStringAsync($"https://api.github.com/repos/Dyvinia/DatapathFixPlugin/releases/latest")).Tag.Substring(1));
+                    if (CurrentVersion.CompareTo(latestVersion) < 0)
                     {
                         return true;
                     }
