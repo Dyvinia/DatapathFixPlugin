@@ -1,5 +1,6 @@
 ﻿using Frosty.Core;
 using FrostySdk.Attributes;
+using FrostySdk.IO;
 
 namespace DatapathFixPlugin.Options
 {
@@ -10,13 +11,13 @@ namespace DatapathFixPlugin.Options
         [Category("DatapathFix")]
         [DisplayName("Enabled")]
         [Description("Enables DatapathFix")]
-        [EbxFieldMeta(FrostySdk.IO.EbxFieldType.Boolean)]
+        [EbxFieldMeta(EbxFieldType.Boolean)]
         public bool DatapathFixEnabled { get; set; } = true;
 
         [Category("DatapathFix")]
         [DisplayName("Check for Updates")]
         [Description("Check Github for DatapathFix updates")]
-        [EbxFieldMeta(FrostySdk.IO.EbxFieldType.Boolean)]
+        [EbxFieldMeta(EbxFieldType.Boolean)]
         public bool DatapathFixUpdateCheck { get; set; } = true;
 
         public override void Load()
