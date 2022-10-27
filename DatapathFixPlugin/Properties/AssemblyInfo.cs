@@ -1,4 +1,5 @@
-﻿using Frosty.Core.Attributes;
+﻿using Frosty.Core;
+using Frosty.Core.Attributes;
 using DatapathFixPlugin.Actions;
 using DatapathFixPlugin.Options;
 using System.Runtime.InteropServices;
@@ -23,7 +24,7 @@ using System.Windows;
 
 [assembly: PluginDisplayName("DatapathFix")]
 [assembly: PluginAuthor("Dyvinia")]
-[assembly: PluginVersion("1.2.0")]
+[assembly: PluginVersion("1.3.0")]
 
-[assembly: RegisterOptionsExtension(typeof(LaunchOptions), Frosty.Core.PluginManagerType.Both)]
+[assembly: RegisterOptionsExtension(typeof(LaunchOptions), PluginManagerType.Both)]
 [assembly: RegisterExecutionAction(typeof(LaunchExecutionAction))]
