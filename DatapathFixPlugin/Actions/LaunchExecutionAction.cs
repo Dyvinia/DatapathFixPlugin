@@ -56,15 +56,6 @@ namespace DatapathFixPlugin.Actions
 
         public override Action<ILogger, PluginManagerType, CancellationToken> PostLaunchAction => new Action<ILogger, PluginManagerType, CancellationToken>((ILogger logger, PluginManagerType type, CancellationToken cancelToken) =>
         {
-            if (Config.Get("DatapathFixEnabled", true) && File.Exists(DatapathFix))
-            {
-                logger.Log("Waiting For Game");
-                Thread.Sleep(4000);
-                WaitForProcess(Game);
-
-                ResetGameDirectory();
-            }
-
             if (Config.Get("DatapathFixUpdateCheck", true) && CheckUpdates().Result)
             {
                 Task.Run(() =>
