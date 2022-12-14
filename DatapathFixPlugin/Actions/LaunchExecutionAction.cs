@@ -20,6 +20,8 @@ namespace DatapathFixPlugin.Actions
     {
         public string Game => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.exe");
 
+        public string Par => Path.Combine(App.FileSystemManager.BasePath, $"{ProfilesLibrary.ProfileName}.par");
+
         public string DatapathFix = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix.exe");
 
         public Version CurrentVersion = new Version(Assembly.GetExecutingAssembly().GetCustomAttribute<PluginVersionAttribute>().Version);
@@ -39,6 +41,10 @@ namespace DatapathFixPlugin.Actions
                 {
                     File.WriteAllText(Path.Combine(App.FileSystem.BasePath, "tmp"), cmdArgs);
                     File.Move(Game, Game.Replace(".exe", ".orig.exe"));
+                    if (File.Exists(Par))
+                    {
+                        File.Copy(Par, Par.Replace(".par", ".orig.par"));
+                    }
                     File.Copy(DatapathFix, Game, true);
                 }
                 catch (Exception ex)
