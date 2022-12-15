@@ -20,7 +20,7 @@ namespace DatapathFixPlugin.Actions
     {
         public string Game => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.exe");
 
-        public string Par => Path.Combine(App.FileSystemManager.BasePath, $"{ProfilesLibrary.ProfileName}.par");
+        public string Par => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.par");
 
         public string DatapathFix = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix.exe");
 
@@ -28,6 +28,10 @@ namespace DatapathFixPlugin.Actions
 
         public override Action<ILogger, PluginManagerType, CancellationToken> PreLaunchAction => new Action<ILogger, PluginManagerType, CancellationToken>((ILogger logger, PluginManagerType type, CancellationToken cancelToken) =>
         {
+            App.Logger.Log($"DatapathFix v{CurrentVersion} by Dyvinia");
+            App.Logger.Log(@"Github: https://github.com/Dyvinia/DatapathFixPlugin");
+            App.Logger.Log(@"Donate: https://ko-fi.com/Dyvinia");
+
             if (Config.Get("DatapathFixEnabled", true) && File.Exists(DatapathFix))
             {
                 ResetGameDirectory();
@@ -136,14 +140,8 @@ namespace DatapathFixPlugin.Actions
                     client.DefaultRequestHeaders.Add("User-Agent", "request");
 
                     Version latestVersion = new Version(JsonConvert.DeserializeObject<Release>(await client.GetStringAsync($"https://api.github.com/repos/Dyvinia/DatapathFixPlugin/releases/latest")).Tag.Substring(1));
-                    if (CurrentVersion.CompareTo(latestVersion) < 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+
+                    return CurrentVersion.CompareTo(latestVersion) < 0;
                 }
             }
             catch
