@@ -15,3 +15,8 @@ DatapathFix is an experimental Frosty plugin to fix an issue with modding games 
 - If EA Desktop tells you that you do not own the game, restart it through the in-app restart button
 - If the game shows up as "DatapathFix" in Frosty, try to launch the game like normal and it should fix itself
 - Make sure to disable the LaunchPlatformPlugin that comes with Frosty 
+
+## Credits
+Created by [Dyvinia](https://twitter.com/Dyvinia)
+
+[![Donate-Kofi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J63UBHG)
