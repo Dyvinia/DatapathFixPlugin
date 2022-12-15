@@ -17,6 +17,12 @@ namespace DatapathFix {
                     File.Move(currentPath, currentPath.Replace(".exe", ".old"));
                     File.Move(origPath, currentPath);
 
+                    // Old games require .par file with same name
+                    string parPath = origPath.Replace(".exe", ".par");
+                    if (File.Exists(parPath)) {
+                        File.Delete(parPath);
+                    }
+
                     Process.Start(new ProcessStartInfo {
                         FileName = currentPath,
                         WorkingDirectory = Environment.CurrentDirectory,
