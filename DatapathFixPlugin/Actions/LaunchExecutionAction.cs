@@ -75,7 +75,7 @@ namespace DatapathFixPlugin.Actions
             }
             else if (!File.Exists(DatapathFix))
             {
-                App.Logger.LogError("Cannot find DatapathFix.exe");
+                App.Logger.LogError($"Cannot find {Path.GetFileName(DatapathFix)}");
             }
         });
 
