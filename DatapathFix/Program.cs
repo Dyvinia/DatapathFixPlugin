@@ -26,12 +26,19 @@ namespace DatapathFix {
                     Console.WriteLine($"Starting '{Path.GetFileName(currentPath)}' with mods");
                     AnyKeyToContinue();
 
-                    Process.Start(new ProcessStartInfo {
-                        FileName = currentPath,
-                        WorkingDirectory = Environment.CurrentDirectory,
-                        Arguments = dataPathArg,
-                        UseShellExecute = false
-                    });
+                    try {
+                        Process.Start(new ProcessStartInfo {
+                            FileName = currentPath,
+                            WorkingDirectory = Environment.CurrentDirectory,
+                            Arguments = dataPathArg,
+                            UseShellExecute = false
+                        });
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine($"Error While Launching:");
+                        Console.WriteLine(e);
+                        AnyKeyToContinue();
+                    }
                 }
 
                 // if arguments are present, assume it was Frosty attempting to launch. Start game.orig.exe to prompt EAD/etc to launch the game.
@@ -40,11 +47,18 @@ namespace DatapathFix {
                     Console.WriteLine($"Starting '{Path.GetFileName(origPath)}' to prompt EA Desktop to launch the game");
                     AnyKeyToContinue();
 
-                    Process.Start(new ProcessStartInfo {
-                        FileName = origPath,
-                        WorkingDirectory = Environment.CurrentDirectory,
-                        UseShellExecute = false
-                    });
+                    try {
+                        Process.Start(new ProcessStartInfo {
+                            FileName = origPath,
+                            WorkingDirectory = Environment.CurrentDirectory,
+                            UseShellExecute = false
+                        });
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine($"Error While Launching:");
+                        Console.WriteLine(e);
+                        AnyKeyToContinue();
+                    }
                 }
             }
             else {
