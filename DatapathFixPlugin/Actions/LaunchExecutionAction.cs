@@ -84,8 +84,13 @@ namespace DatapathFixPlugin.Actions
         {
             try
             {
-                File.Delete(Game.Replace(".exe", ".old"));
                 File.Delete(Path.Combine(App.FileSystem.BasePath, "tmp"));
+
+                // only delete game.old if it is less than one MB to ensure it does not delete the actual game
+                if (new FileInfo(Game.Replace(".exe", ".old")).Length < 1000000)
+                {
+                    File.Delete(Game.Replace(".exe", ".old"));
+                }
             }
             catch (Exception ex)
             {
@@ -94,7 +99,7 @@ namespace DatapathFixPlugin.Actions
 
             try
             {
-                if (File.Exists(Game.Replace(".exe", ".orig.exe")))
+                if (File.Exists(Game.Replace(".exe", ".orig.exe")) && new FileInfo(Game).Length < 1000000)
                 {
                     File.Delete(Game);
                     File.Move(Game.Replace(".exe", ".orig.exe"), Game);
@@ -103,23 +108,6 @@ namespace DatapathFixPlugin.Actions
             catch (Exception ex)
             {
                 App.Logger.LogWarning(ex.Message);
-            }
-        }
-
-        private void WaitForProcess(string name)
-        {
-            Stopwatch s = new Stopwatch();
-            s.Start();
-
-            // Check only for the next 8 seconds to prevent lockup
-            while (s.Elapsed < TimeSpan.FromSeconds(8))
-            {
-                Process[] processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(name));
-
-                if (processes.Length > 0)
-                {
-                    return;
-                }
             }
         }
 
