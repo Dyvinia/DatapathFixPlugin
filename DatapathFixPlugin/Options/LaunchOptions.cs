@@ -20,16 +20,24 @@ namespace DatapathFixPlugin.Options
         [EbxFieldMeta(EbxFieldType.Boolean)]
         public bool DatapathFixUpdateCheck { get; set; } = true;
 
+        [Category("DatapathFix")]
+        [DisplayName("DEBUG MODE")]
+        [Description("Used for Debugging")]
+        [EbxFieldMeta(EbxFieldType.Boolean)]
+        public bool DatapathFixDebugMode { get; set; } = false;
+
         public override void Load()
         {
             DatapathFixEnabled = Config.Get("DatapathFixEnabled", true);
             DatapathFixUpdateCheck = Config.Get("DatapathFixUpdateCheck", true);
+            DatapathFixDebugMode = Config.Get("DatapathFixDebugMode", false);
         }
 
         public override void Save()
         {
             Config.Add("DatapathFixEnabled", DatapathFixEnabled);
             Config.Add("DatapathFixUpdateCheck", DatapathFixUpdateCheck);
+            Config.Add("DatapathFixDebugMode", DatapathFixDebugMode);
         }
     }
 }

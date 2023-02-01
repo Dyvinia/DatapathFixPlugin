@@ -22,7 +22,22 @@ namespace DatapathFixPlugin.Actions
 
         public string Par => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.par");
 
-        public string DatapathFix = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix.exe");
+        public string DatapathFix
+        {
+            get
+            {
+                string fileName;
+                if (!Config.Get("DatapathFixDebugMode", false))
+                {
+                    fileName = "DatapathFix.exe";
+                }
+                else
+                {
+                    fileName = "DatapathFix(DEBUG).exe";
+                }
+                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), fileName);
+            }
+        }
 
         public Version CurrentVersion = new Version(Assembly.GetExecutingAssembly().GetCustomAttribute<PluginVersionAttribute>().Version);
 
