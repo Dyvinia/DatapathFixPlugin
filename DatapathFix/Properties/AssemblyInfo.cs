@@ -4,7 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+#if DEBUG
+[assembly: AssemblyTitle("DatapathFix(DEBUG)")]
+#else
 [assembly: AssemblyTitle("DatapathFix")]
+#endif
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dyvinia")]
