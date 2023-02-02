@@ -26,12 +26,8 @@ namespace DatapathFixPlugin.Actions
         {
             get
             {
-                string fileName;
-                if (!Config.Get("DatapathFixDebugMode", false))
-                {
-                    fileName = "DatapathFix.exe";
-                }
-                else
+                string fileName = "DatapathFix.exe";
+                if (Config.Get("DatapathFixDebugMode", false))
                 {
                     fileName = "DatapathFix(DEBUG).exe";
                 }
