@@ -57,7 +57,7 @@ namespace DatapathFixPlugin.Actions
                     File.Move(Game, Game.Replace(".exe", ".orig.exe"));
                     if (File.Exists(Par))
                     {
-                        File.Copy(Par, Par.Replace(".par", ".orig.par"));
+                        File.Copy(Par, Par.Replace(".par", ".orig.par"), true);
                     }
                     File.Copy(DatapathFix, Game, true);
                 }
@@ -101,11 +101,13 @@ namespace DatapathFixPlugin.Actions
             try
             {
                 File.Delete(Path.Combine(App.FileSystem.BasePath, "tmp"));
+                File.Delete(Par.Replace(".par", ".orig.par"));
 
                 // only delete game.old if it is less than 1MB to ensure it does not delete the actual game
-                if (new FileInfo(Game.Replace(".exe", ".old")).Length < 1000000)
+                string gameOld = Game.Replace(".exe", ".old");
+                if (File.Exists(gameOld) && new FileInfo(gameOld).Length < 1000000)
                 {
-                    File.Delete(Game.Replace(".exe", ".old"));
+                    File.Delete(gameOld);
                 }
             }
             catch (Exception ex)
