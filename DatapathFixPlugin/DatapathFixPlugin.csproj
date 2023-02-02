@@ -49,8 +49,8 @@
     <Exec Command="xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\&#xD;&#xA;xcopy /Y $(TargetDir)$(TargetName).pdb D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
     <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Release\DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\DatapathFix\" />
     <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Debug\DatapathFix(DEBUG).exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\DatapathFix\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Release\DatapathFix.exe $(TargetDir)" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Debug\DatapathFix(DEBUG).exe $(TargetDir)" />
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Release\DatapathFix.exe $(TargetDir)DatapathFix\" />
+    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Debug\DatapathFix(DEBUG).exe $(TargetDir)DatapathFix\" />
   </Target>
 
   <ItemGroup>
