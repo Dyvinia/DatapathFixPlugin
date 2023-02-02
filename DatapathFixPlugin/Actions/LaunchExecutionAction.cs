@@ -71,6 +71,12 @@ namespace DatapathFixPlugin.Actions
             else if (!File.Exists(DatapathFix))
             {
                 App.Logger.LogError($"Cannot find {Path.GetFileName(DatapathFix)}");
+
+                Task.Run(() =>
+                {
+                    SystemSounds.Exclamation.Play();
+                    FrostyMessageBox.Show($"Cannot find {Path.GetFileName(DatapathFix)}", "DatapathFixPlugin", MessageBoxButton.OK);
+                });
             }
         });
 
