@@ -14,9 +14,10 @@ DatapathFix is an experimental Frosty plugin to fix an issue with modding games 
 4. Open Frosty and make sure to disable `Launch Platform Plugin` or delete it from the `Plugins` folder
 
 ### Troubleshooting
-- If EA Desktop tells you that you do not own the game, restart it through the in-app restart button
-- If the game shows up as "DatapathFix" in Frosty, try to launch the game like normal and it should fix itself
-- Make sure to disable the LaunchPlatformPlugin that comes with Frosty 
+- If EA Desktop tells you that you do not own the game, restart it through the in-app restart button.
+- If Steam/EpicGamesStore has the game stuck as "Running" completely kill and restart Steam/EpicGamesStore.
+- If the game shows up as "DatapathFix" in Frosty, try to launch the game like normal and it should fix itself.
+- Make sure to disable the LaunchPlatformPlugin that comes with Frosty.
 
 ## Credits
 Created by [Dyvinia](https://twitter.com/Dyvinia)
