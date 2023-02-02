@@ -30,7 +30,7 @@ namespace DatapathFixPlugin.Actions
                 {
                     fileName = "DatapathFix(DEBUG).exe";
                 }
-                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), fileName);
+                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix", fileName);
             }
         }
 
