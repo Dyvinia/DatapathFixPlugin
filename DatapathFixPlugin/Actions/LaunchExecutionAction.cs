@@ -129,6 +129,7 @@ namespace DatapathFixPlugin.Actions
 
         private class Release
         {
+            [JsonProperty(PropertyName = "name")]
             public string Name;
 
             [JsonProperty(PropertyName = "tag_name")]
