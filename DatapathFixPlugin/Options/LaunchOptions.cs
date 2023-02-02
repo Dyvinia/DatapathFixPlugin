@@ -20,9 +20,9 @@ namespace DatapathFixPlugin.Options
         [EbxFieldMeta(EbxFieldType.Boolean)]
         public bool DatapathFixUpdateCheck { get; set; } = true;
 
-        [Category("DatapathFix")]
-        [DisplayName("DEBUG MODE")]
-        [Description("Used for Debugging")]
+        [Category("Debugging")]
+        [DisplayName("Debug Mode")]
+        [Description("Used for Debugging\nDo not use unless directed to by a developer/etc")]
         [EbxFieldMeta(EbxFieldType.Boolean)]
         public bool DatapathFixDebugMode { get; set; } = false;
 

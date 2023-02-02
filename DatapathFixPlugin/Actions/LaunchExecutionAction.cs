@@ -19,7 +19,6 @@ namespace DatapathFixPlugin.Actions
     public class LaunchExecutionAction : ExecutionAction
     {
         public string Game => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.exe");
-
         public string Par => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.par");
 
         public string DatapathFix
@@ -97,7 +96,7 @@ namespace DatapathFixPlugin.Actions
             {
                 File.Delete(Path.Combine(App.FileSystem.BasePath, "tmp"));
 
-                // only delete game.old if it is less than one MB to ensure it does not delete the actual game
+                // only delete game.old if it is less than 1MB to ensure it does not delete the actual game
                 if (new FileInfo(Game.Replace(".exe", ".old")).Length < 1000000)
                 {
                     File.Delete(Game.Replace(".exe", ".old"));
