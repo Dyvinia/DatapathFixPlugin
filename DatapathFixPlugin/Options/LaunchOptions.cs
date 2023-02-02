@@ -38,6 +38,12 @@ namespace DatapathFixPlugin.Options
             Config.Add("DatapathFixEnabled", DatapathFixEnabled);
             Config.Add("DatapathFixUpdateCheck", DatapathFixUpdateCheck);
             Config.Add("DatapathFixDebugMode", DatapathFixDebugMode);
+
+            // Prevent LaunchPlatformPlugin from being used at the same time at DPFix
+            if (DatapathFixEnabled && Config.Get("PlatformLaunchingEnabled", false, ConfigScope.Game))
+            {
+                Config.Add("PlatformLaunchingEnabled", false, ConfigScope.Game);
+            }
         }
     }
 }
