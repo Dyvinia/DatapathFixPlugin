@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace DatapathFix {
     internal class Program {
@@ -23,18 +24,12 @@ namespace DatapathFix {
                     {
                         Process.Start(new ProcessStartInfo
                         {
-                            FileName = "cmd.exe",
-                            Arguments = $"/C move \"{currentPath}\" \"{currentPath.Replace(".exe", ".old")}\"",
+                            FileName = currentPath,
+                            Arguments = BuildArgs(args),
                             UseShellExecute = true,
                             Verb = "runas"
                         });
-                        Process.Start(new ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = $"/C move \"{origPath}\" \"{currentPath}\"",
-                            UseShellExecute = true,
-                            Verb = "runas"
-                        });
+                        return;
                     }
 
                     // Old games require .par file with same name
@@ -48,11 +43,12 @@ namespace DatapathFix {
                         {
                             Process.Start(new ProcessStartInfo
                             {
-                                FileName = "cmd.exe",
-                                Arguments = $"/C del \"{parPath}\"",
+                                FileName = currentPath,
+                                Arguments = BuildArgs(args),
                                 UseShellExecute = true,
                                 Verb = "runas"
                             });
+                            return;
                         }
                     }
 
@@ -109,6 +105,16 @@ namespace DatapathFix {
                 Console.ReadKey();
 #endif
             }
+        }
+
+        static string BuildArgs(string[] args)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string arg in args)
+            {
+                sb.Append(arg + " ");
+            }
+            return sb.ToString();
         }
     }
 }
