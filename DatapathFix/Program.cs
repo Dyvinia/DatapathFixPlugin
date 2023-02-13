@@ -14,13 +14,46 @@ namespace DatapathFix {
 
                 // EA Desktop will always launch without arguments
                 if (args.Length == 0) {
-                    File.Move(currentPath, currentPath.Replace(".exe", ".old"));
-                    File.Move(origPath, currentPath);
+                    try
+                    {
+                        File.Move(currentPath, currentPath.Replace(".exe", ".old"));
+                        File.Move(origPath, currentPath);
+                    }
+                    catch (IOException e)
+                    {
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = $"/C move \"{currentPath}\" \"{currentPath.Replace(".exe", ".old")}\"",
+                            UseShellExecute = true,
+                            Verb = "runas"
+                        });
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = $"/C move \"{origPath}\" \"{currentPath}\"",
+                            UseShellExecute = true,
+                            Verb = "runas"
+                        });
+                    }
 
                     // Old games require .par file with same name
                     string parPath = origPath.Replace(".exe", ".par");
                     if (File.Exists(parPath)) {
-                        File.Delete(parPath);
+                        try
+                        {
+                            File.Delete(parPath);
+                        }
+                        catch (IOException e)
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = "cmd.exe",
+                                Arguments = $"/C del \"{parPath}\"",
+                                UseShellExecute = true,
+                                Verb = "runas"
+                            });
+                        }
                     }
 
                     Console.WriteLine($"Starting '{Path.GetFileName(currentPath)}' with mods");
