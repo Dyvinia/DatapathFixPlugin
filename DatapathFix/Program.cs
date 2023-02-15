@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace DatapathFix {
     internal class Program {
@@ -14,13 +15,41 @@ namespace DatapathFix {
 
                 // EA Desktop will always launch without arguments
                 if (args.Length == 0) {
-                    File.Move(currentPath, currentPath.Replace(".exe", ".old"));
-                    File.Move(origPath, currentPath);
+                    try
+                    {
+                        File.Move(currentPath, currentPath.Replace(".exe", ".old"));
+                        File.Move(origPath, currentPath);
+                    }
+                    catch (IOException e)
+                    {
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = currentPath,
+                            Arguments = BuildArgs(args),
+                            UseShellExecute = true,
+                            Verb = "runas"
+                        });
+                        return;
+                    }
 
                     // Old games require .par file with same name
                     string parPath = origPath.Replace(".exe", ".par");
                     if (File.Exists(parPath)) {
-                        File.Delete(parPath);
+                        try
+                        {
+                            File.Delete(parPath);
+                        }
+                        catch (IOException e)
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = currentPath,
+                                Arguments = BuildArgs(args),
+                                UseShellExecute = true,
+                                Verb = "runas"
+                            });
+                            return;
+                        }
                     }
 
                     Console.WriteLine($"Starting '{Path.GetFileName(currentPath)}' with mods");
@@ -76,6 +105,16 @@ namespace DatapathFix {
                 Console.ReadKey();
 #endif
             }
+        }
+
+        static string BuildArgs(string[] args)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string arg in args)
+            {
+                sb.Append(arg + " ");
+            }
+            return sb.ToString();
         }
     }
 }
