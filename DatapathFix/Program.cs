@@ -15,15 +15,17 @@ namespace DatapathFix {
 
                 // EA Desktop will always launch without arguments
                 if (args.Length == 0) {
-                    try
-                    {
+                    try {
                         File.Move(currentPath, currentPath.Replace(".exe", ".old"));
                         File.Move(origPath, currentPath);
                     }
-                    catch (IOException e)
-                    {
-                        Process.Start(new ProcessStartInfo
-                        {
+                    catch (IOException e) {
+                        Console.WriteLine($"Error While Launching: Unable to Move Files");
+                        Console.WriteLine(e);
+                        Console.WriteLine($"Restarting as Administrator...");
+                        AnyKeyToContinue();
+
+                        Process.Start(new ProcessStartInfo {
                             FileName = currentPath,
                             Arguments = BuildArgs(args),
                             UseShellExecute = true,
@@ -35,14 +37,16 @@ namespace DatapathFix {
                     // Old games require .par file with same name
                     string parPath = origPath.Replace(".exe", ".par");
                     if (File.Exists(parPath)) {
-                        try
-                        {
+                        try {
                             File.Delete(parPath);
                         }
-                        catch (IOException e)
-                        {
-                            Process.Start(new ProcessStartInfo
-                            {
+                        catch (IOException e) {
+                            Console.WriteLine($"Error While Launching: Unable to Delete File");
+                            Console.WriteLine(e);
+                            Console.WriteLine($"Restarting as Administrator...");
+                            AnyKeyToContinue();
+
+                            Process.Start(new ProcessStartInfo {
                                 FileName = currentPath,
                                 Arguments = BuildArgs(args),
                                 UseShellExecute = true,
@@ -110,8 +114,7 @@ namespace DatapathFix {
         static string BuildArgs(string[] args)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (string arg in args)
-            {
+            foreach (string arg in args) {
                 sb.Append(arg + " ");
             }
             return sb.ToString();
