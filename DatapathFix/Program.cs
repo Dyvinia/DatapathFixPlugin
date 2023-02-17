@@ -19,7 +19,7 @@ namespace DatapathFix {
                         File.Move(currentPath, currentPath.Replace(".exe", ".old"));
                         File.Move(origPath, currentPath);
                     }
-                    catch (IOException e) {
+                    catch (Exception e) {
                         Console.WriteLine($"Error While Launching: Unable to Move Files");
                         Console.WriteLine(e);
                         Console.WriteLine($"Restarting as Administrator...");
