@@ -25,7 +25,7 @@ using System.Reflection;
 
 [assembly: PluginDisplayName("DatapathFix")]
 [assembly: PluginAuthor("Dyvinia")]
-[assembly: PluginVersion("1.5.0")]
+[assembly: PluginVersion("1.5.1")]
 
 [assembly: RegisterOptionsExtension(typeof(LaunchOptions), PluginManagerType.Both)]
 [assembly: RegisterExecutionAction(typeof(LaunchExecutionAction))]
