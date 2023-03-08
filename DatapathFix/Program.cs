@@ -25,9 +25,9 @@ namespace DatapathFix {
                         Console.WriteLine($"Restarting as Administrator...");
                         AnyKeyToContinue();
 
+                        // No arguments since it can only reach this code if there are no arguments
                         Process.Start(new ProcessStartInfo {
                             FileName = currentPath,
-                            Arguments = BuildArgs(args),
                             UseShellExecute = true,
                             Verb = "runas"
                         });
@@ -40,7 +40,7 @@ namespace DatapathFix {
                         try {
                             File.Delete(parPath);
                         }
-                        catch (IOException e) {
+                        catch (Exception e) {
                             Console.WriteLine($"Error While Launching: Unable to Delete File");
                             Console.WriteLine(e);
                             Console.WriteLine($"Restarting as Administrator...");
@@ -48,7 +48,6 @@ namespace DatapathFix {
 
                             Process.Start(new ProcessStartInfo {
                                 FileName = currentPath,
-                                Arguments = BuildArgs(args),
                                 UseShellExecute = true,
                                 Verb = "runas"
                             });
@@ -109,15 +108,6 @@ namespace DatapathFix {
                 Console.ReadKey();
 #endif
             }
-        }
-
-        static string BuildArgs(string[] args)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (string arg in args) {
-                sb.Append(arg + " ");
-            }
-            return sb.ToString();
         }
     }
 }
