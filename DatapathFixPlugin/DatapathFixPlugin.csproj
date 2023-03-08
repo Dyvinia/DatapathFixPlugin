@@ -6,6 +6,7 @@
     <AssemblyTitle>DatapathFixPlugin</AssemblyTitle>
     <Product>DatapathFixPlugin</Product>
     <Copyright>Copyright ©  2020</Copyright>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWPF>true</UseWPF>
