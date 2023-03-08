@@ -25,7 +25,7 @@ namespace DatapathFix {
                         Console.WriteLine($"Restarting as Administrator...");
                         AnyKeyToContinue();
 
-                        // No arguments since it can only reach this code if there are no arguments
+                        // No need for arguments since it can only reach this code if there are no arguments
                         Process.Start(new ProcessStartInfo {
                             FileName = currentPath,
                             UseShellExecute = true,
