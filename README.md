@@ -2,7 +2,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/Dyvinia/DatapathFixPlugin?style=for-the-badge&labelColor=270943&color=8f35e3&label=Release)](https://github.com/Dyvinia/DatapathFixPlugin/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Dyvinia/DatapathFixPlugin/total?style=for-the-badge&labelColor=270943&color=8f35e3&label=Downloads)](https://github.com/Dyvinia/DatapathFixPlugin/releases)
 
-DatapathFix is an experimental Frosty plugin to fix an issue with modding games on platforms other than Origin (EA Desktop, Epic Games Store, Steam), where mods do not appear in the game. This plugin works with games that FrostyFix does not support.
+DatapathFix is an experimental Frosty plugin to fix an issue with modding games on platforms other than Origin/EA Desktop (Epic Games Store & Steam), where mods do not appear in the game. This plugin works with games that FrostyFix does not support.
 
 ## Instructions
 
