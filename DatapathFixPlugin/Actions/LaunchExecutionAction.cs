@@ -18,8 +18,10 @@ namespace DatapathFixPlugin.Actions
 {
     public class LaunchExecutionAction : ExecutionAction
     {
-        public string FSBasePath {
-            get {
+        public string FSBasePath
+        {
+            get
+            {
                 dynamic fileSystem = typeof(App).GetField("FileSystem")?.GetValue(this) ?? typeof(App).GetField("FileSystemManager")?.GetValue(this);
                 return fileSystem.BasePath;
             }
