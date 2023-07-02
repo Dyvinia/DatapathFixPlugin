@@ -18,8 +18,15 @@ namespace DatapathFixPlugin.Actions
 {
     public class LaunchExecutionAction : ExecutionAction
     {
-        public string Game => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.exe");
-        public string Par => Path.Combine(App.FileSystem.BasePath, $"{ProfilesLibrary.ProfileName}.par");
+        public string FSBasePath {
+            get {
+                dynamic fileSystem = typeof(App).GetField("FileSystem")?.GetValue(this) ?? typeof(App).GetField("FileSystemManager")?.GetValue(this);
+                return fileSystem.BasePath;
+            }
+        }
+
+        public string Game => Path.Combine(FSBasePath, $"{ProfilesLibrary.ProfileName}.exe");
+        public string Par => Path.Combine(FSBasePath, $"{ProfilesLibrary.ProfileName}.par");
 
         public string DatapathFix
         {
@@ -48,12 +55,12 @@ namespace DatapathFixPlugin.Actions
 
                 Thread.Sleep(1000);
 
-                string cmdArgs = $"-dataPath \"{Path.Combine(App.FileSystem.BasePath, $"ModData\\{App.SelectedPack}")}\" ";
+                string cmdArgs = $"-dataPath \"{Path.Combine(FSBasePath, $"ModData\\{App.SelectedPack}")}\" ";
                 cmdArgs += Config.Get("CommandLineArgs", "", ConfigScope.Game);
 
                 try
                 {
-                    File.WriteAllText(Path.Combine(App.FileSystem.BasePath, "tmp"), cmdArgs);
+                    File.WriteAllText(Path.Combine(FSBasePath, "tmp"), cmdArgs);
                     File.Move(Game, Game.Replace(".exe", ".orig.exe"));
                     if (File.Exists(Par))
                     {
@@ -70,12 +77,12 @@ namespace DatapathFixPlugin.Actions
             }
             else if (!File.Exists(DatapathFix))
             {
-                App.Logger.LogError($"Cannot find {Path.GetFileName(DatapathFix)}");
+                App.Logger.LogError($"Cannot find {DatapathFix}");
 
                 Task.Run(() =>
                 {
                     SystemSounds.Exclamation.Play();
-                    FrostyMessageBox.Show($"Cannot find {Path.GetFileName(DatapathFix)}", "DatapathFixPlugin", MessageBoxButton.OK);
+                    FrostyMessageBox.Show($"Cannot find \\Plugins\\DatapathFix\\{Path.GetFileName(DatapathFix)}", "DatapathFixPlugin", MessageBoxButton.OK);
                 });
             }
         });
@@ -100,7 +107,7 @@ namespace DatapathFixPlugin.Actions
         {
             try
             {
-                File.Delete(Path.Combine(App.FileSystem.BasePath, "tmp"));
+                File.Delete(Path.Combine(FSBasePath, "tmp"));
                 File.Delete(Par.Replace(".par", ".orig.par"));
 
                 // only delete game.old if it is less than 1MB to ensure it does not delete the actual game
