@@ -50,6 +50,7 @@ namespace DatapathFixPlugin.Actions
             App.Logger.Log($"DatapathFix v{CurrentVersion} by Dyvinia");
             App.Logger.Log(@"Github: https://github.com/Dyvinia/DatapathFixPlugin");
             App.Logger.Log(@"Donate: https://ko-fi.com/Dyvinia");
+            App.Logger.Log(@"Note: This is only needed for Steam or Epic Games Store; no longer needed when using only the EA App");
 
             if (Config.Get("DatapathFixEnabled", true) && File.Exists(DatapathFix))
             {
