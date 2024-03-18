@@ -10,10 +10,8 @@ DatapathFix is an experimental Frosty plugin to fix an issue with modding games 
 
 1. Download & Unzip the latest version of [Frosty Toolsuite](https://github.com/CadeEvs/FrostyToolsuite/releases)
 2. Go to the folder where you Unzipped frosty and go into the `Plugins` folder 
-3. Extract the contents of the `DatapathFixPlugin.zip` into the folder
+3. Drag the `DatapathFixPlugin.dll` file into the `Plugins` folder
 4. Open Frosty and make sure to disable `Launch Platform Plugin` or delete it from the `Plugins` folder
-
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/13797470/217099203-aef1e38e-c61e-4094-8fe2-d9523ff43061.gif)
 
 ### Troubleshooting
 - Disable In Game Overlay in EA Desktop
