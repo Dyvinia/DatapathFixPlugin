@@ -1,6 +1,7 @@
 ﻿using Frosty.Core;
 using FrostySdk.Attributes;
 using FrostySdk.IO;
+using DatapathFixPlugin.Actions;
 
 namespace DatapathFixPlugin.Options {
 
@@ -36,9 +37,10 @@ namespace DatapathFixPlugin.Options {
             Config.Add("DatapathFixDebugMode", DatapathFixDebugMode);
 
             // Prevent LaunchPlatformPlugin from being used at the same time at DPFix
-            if (DatapathFixEnabled && Config.Get("PlatformLaunchingEnabled", false, ConfigScope.Game)) {
+            if (DatapathFixEnabled && Config.Get("PlatformLaunchingEnabled", false, ConfigScope.Game))
                 Config.Add("PlatformLaunchingEnabled", false, ConfigScope.Game);
-            }
+
+            LaunchExecutionAction.ExtractDatapathFix();
         }
     }
 }

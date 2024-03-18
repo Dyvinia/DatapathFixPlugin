@@ -136,7 +136,7 @@ namespace DatapathFixPlugin.Actions {
             ExtractDatapathFix();
         }
 
-        private static void ExtractDatapathFix() {
+        public static void ExtractDatapathFix() {
             if (!Directory.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix")))
                 Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "DatapathFix"));
 
