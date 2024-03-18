@@ -30,3 +30,5 @@ using DatapathFixPlugin.Extensions;
 [assembly: RegisterOptionsExtension(typeof(LaunchOptions), PluginManagerType.Both)]
 [assembly: RegisterExecutionAction(typeof(LaunchExecutionAction))]
 [assembly: RegisterMenuExtension(typeof(DatapathFixMenuExtension), PluginManagerType.Both)]
+[assembly: RegisterMenuExtension(typeof(DPFGithubMenuExtension), PluginManagerType.Both)]
+[assembly: RegisterMenuExtension(typeof(DPFDonateMenuExtension), PluginManagerType.Both)]

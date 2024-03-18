@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Frosty.Core;
 using FrostySdk;
@@ -44,5 +45,23 @@ namespace DatapathFixPlugin.Extensions {
                 App.Logger.LogWarning(ex.Message);
             }
         });
+    }
+
+    public class DPFGithubMenuExtension : MenuExtension {
+        public override string TopLevelMenuName => "Tools";
+        public override string SubLevelMenuName => "DatapathFix";
+
+        public override string MenuItemName => "Github";
+
+        public override RelayCommand MenuItemClicked => new RelayCommand((o) => Process.Start("https://github.com/Dyvinia/DatapathFixPlugin"));
+    }
+
+    public class DPFDonateMenuExtension : MenuExtension {
+        public override string TopLevelMenuName => "Tools";
+        public override string SubLevelMenuName => "DatapathFix";
+
+        public override string MenuItemName => "Donate";
+
+        public override RelayCommand MenuItemClicked => new RelayCommand((o) => Process.Start("https://ko-fi.com/Dyvinia"));
     }
 }
