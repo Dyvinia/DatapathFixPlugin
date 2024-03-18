@@ -24,6 +24,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="DatapathFix\DatapathFix%28DEBUG%29.exe" />
+    <None Remove="DatapathFix\DatapathFix.exe" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="DatapathFix\DatapathFix(DEBUG).exe" />
+    <EmbeddedResource Include="DatapathFix\DatapathFix.exe" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="FrostyControls">
@@ -48,22 +58,6 @@
 	
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\&#xD;&#xA;xcopy /Y $(TargetDir)$(TargetName).pdb D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Release\DatapathFix.exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\DatapathFix\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Debug\DatapathFix(DEBUG).exe D:\Development\repos\Dyvinia\FrostyToolsuite\FrostyModManager\bin\Release\Final\Plugins\DatapathFix\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Release\DatapathFix.exe $(TargetDir)DatapathFix\" />
-    <Exec Command="xcopy /Y $(SolutionDir)DatapathFix\bin\Debug\DatapathFix(DEBUG).exe $(TargetDir)DatapathFix\" />
   </Target>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="D:\Development\repos\Dyvinia\FrostyToolsuite\Plugins\DatapathFixPlugin\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="D:\Development\repos\Dyvinia\FrostyToolsuite\Plugins\DatapathFixPlugin\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DatapathFix\" />
-  </ItemGroup>
 
 </Project>
