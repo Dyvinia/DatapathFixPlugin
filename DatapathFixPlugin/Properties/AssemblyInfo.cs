@@ -1,9 +1,10 @@
-﻿using Frosty.Core;
+﻿using System.Runtime.InteropServices;
+using System.Windows;
+using Frosty.Core;
 using Frosty.Core.Attributes;
 using DatapathFixPlugin.Actions;
 using DatapathFixPlugin.Options;
-using System.Runtime.InteropServices;
-using System.Windows;
+using DatapathFixPlugin.Extensions;
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -28,3 +29,4 @@ using System.Windows;
 
 [assembly: RegisterOptionsExtension(typeof(LaunchOptions), PluginManagerType.Both)]
 [assembly: RegisterExecutionAction(typeof(LaunchExecutionAction))]
+[assembly: RegisterMenuExtension(typeof(DatapathFixMenuExtension), PluginManagerType.Both)]
