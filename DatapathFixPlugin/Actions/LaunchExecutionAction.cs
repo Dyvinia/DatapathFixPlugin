@@ -103,19 +103,24 @@ namespace DatapathFixPlugin.Actions {
             public string Tag;
         }
 
-        private async Task<bool> CheckUpdates() {
+        private async void CheckUpdates() {
             try {
                 using (HttpClient client = new HttpClient()) {
                     client.DefaultRequestHeaders.Add("User-Agent", "request");
 
                     Version latestVersion = new Version(JsonConvert.DeserializeObject<Release>(await client.GetStringAsync($"https://api.github.com/repos/Dyvinia/DatapathFixPlugin/releases/latest")).Tag.Substring(1));
 
-                    return CurrentVersion.CompareTo(latestVersion) < 0;
+                    if (CurrentVersion.CompareTo(latestVersion) < 0) {
+                        await Task.Run(() => {
+                            SystemSounds.Exclamation.Play();
+                            MessageBoxResult mbResult = FrostyMessageBox.Show("You are using an outdated version of DatapathFix." + Environment.NewLine + "Would you like to download the latest version?", "DatapathFixPlugin", MessageBoxButton.YesNo);
+                            if (mbResult == MessageBoxResult.Yes)
+                                Process.Start("https://github.com/Dyvinia/DatapathFixPlugin/releases/latest");
+                        });
+                    }
                 }
             }
-            catch {
-                return false;
-            }
+            catch { }
         }
 
         public LaunchExecutionAction() {
@@ -124,14 +129,8 @@ namespace DatapathFixPlugin.Actions {
             App.Logger.Log(@"Donate: https://ko-fi.com/Dyvinia");
             App.Logger.Log(@"Note: This is only needed for Steam or Epic Games Store; no longer needed when using only the EA App");
 
-            if (Config.Get("DatapathFixUpdateCheck", true) && CheckUpdates().Result) {
-                Task.Run(() => {
-                    SystemSounds.Exclamation.Play();
-                    MessageBoxResult mbResult = FrostyMessageBox.Show("You are using an outdated version of DatapathFix." + Environment.NewLine + "Would you like to download the latest version?", "DatapathFixPlugin", MessageBoxButton.YesNo);
-                    if (mbResult == MessageBoxResult.Yes)
-                        Process.Start("https://github.com/Dyvinia/DatapathFixPlugin/releases/latest");
-                });
-            }
+            if (Config.Get("DatapathFixUpdateCheck", true))
+                CheckUpdates();
 
             ExtractDatapathFix();
         }
