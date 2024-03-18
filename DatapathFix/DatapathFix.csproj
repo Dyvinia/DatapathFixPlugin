@@ -58,4 +58,7 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y $(TargetPath) D:\Development\repos\Dyvinia\DatapathFixPlugin\DatapathFixPlugin\DatapathFix\</PostBuildEvent>
+  </PropertyGroup>
 </Project>

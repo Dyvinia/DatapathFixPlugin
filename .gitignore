@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DatapathFixPlugin/DatapathFix/DatapathFix(DEBUG).exe
+/DatapathFixPlugin/DatapathFix/DatapathFix.exe

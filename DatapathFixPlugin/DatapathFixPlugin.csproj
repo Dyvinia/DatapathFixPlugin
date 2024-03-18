@@ -5,7 +5,7 @@
     <TargetFrameworks>net48</TargetFrameworks>
     <AssemblyTitle>DatapathFixPlugin</AssemblyTitle>
     <Product>DatapathFixPlugin</Product>
-    <Copyright>Copyright ©  2020</Copyright>
+    <Copyright>Copyright © Dyvinia 2024</Copyright>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -60,6 +60,10 @@
 
   <ItemGroup>
     <None Include="D:\Development\repos\Dyvinia\FrostyToolsuite\Plugins\DatapathFixPlugin\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DatapathFix\" />
   </ItemGroup>
 
 </Project>
