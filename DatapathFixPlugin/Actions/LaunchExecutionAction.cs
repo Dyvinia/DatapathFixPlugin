@@ -70,6 +70,8 @@ namespace DatapathFixPlugin.Actions {
             }
         });
 
+        public override Action<ILogger, PluginManagerType, CancellationToken> PostLaunchAction => new Action<ILogger, PluginManagerType, CancellationToken>((ILogger logger, PluginManagerType type, CancellationToken cancelToken) => { });
+
         private void ResetGameDirectory() {
             try {
                 File.Delete(Path.Combine(FSBasePath, "tmp"));
